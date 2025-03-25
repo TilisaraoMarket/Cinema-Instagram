@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Instagram - Tilisarao Market</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset y estilos básicos */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a.logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .search-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .category-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 2rem;
+            background-color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-button:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .instagram-gallery {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .instagram-card {
+            background: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 1rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .instagram-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .instagram-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .instagram-card h3 {
+            margin: 1rem 0 0.5rem;
+            color: #1e293b;
+        }
+
+        .instagram-card p {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .instagram-card a {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .instagram-card a:hover {
+            color: #1d4ed8;
+        }
+
+        .add-business-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .add-business-button:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1e293b;
+            color: #fff;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .instagram-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2563eb;
+        }
+
+        .nav-link.active {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modificación en la sección de navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://tilisaraomarket.github.io/Tilisarao-Market/" class="logo">Tilisarao Market</a>
+            <div class="nav-links">
+                <a href="https://tilisaraomarket.github.io/Tilisarao-Market/" class="nav-link">Inicio Tilisarao Market</a>
+                <a href="index.html" class="nav-link active"">Volver a Cinema Instagram</a>
+                <a href="about.html" class="nav-link">Sobre Nosotros</a>
+                <a href="contact.html" class="nav-link">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Cinema Instagram</h1>
+        <p>Descubre y sigue a los comercios de Tilisarao en Instagram</p>
+    </header>
+
+    <!-- Sección de búsqueda y filtros -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Buscar comercios...">
+        </div>
+        <div class="category-filters">
+            <button class="category-button">Todos</button>
+            <button class="category-button">Restaurantes</button>
+            <button class="category-button">Tiendas</button>
+            <button class="category-button">Servicios</button>
+            <button class="category-button">Entretenimiento</button>
+        </div>
+    </section>
+
+    <!-- Galería de Instagram -->
+    <section class="instagram-gallery">
+        <!-- Ejemplo de tarjetas mejoradas -->
+
+        <div class="instagram-card">
+            <img src="logos/Merceria 5 hermanos.jpg" alt="Café del Centro">
+            <h3>Mercería 5 hermanos</h3>
+            <p>Todo lo que necesitas en artículos de mercería y manualidades en Tilisarao</p>
+            <a href="https://www.instagram.com/merceria5hermanos/" target="_blank">@merceria5hermanos</a>
+        </div>
+
+
+    
+        <div class="instagram-card">
+            <img src="https://via.placeholder.com/300?text=Café+del+Centro" alt="Café del Centro">
+            <h3>Café del Centro</h3>
+            <p>El mejor café de especialidad en Tilisarao</p>
+            <a href="https://instagram.com/cafedelcentro" target="_blank">@cafedelcentro</a>
+        </div>
+
+        <div class="instagram-card">
+            <img src="https://via.placeholder.com/300?text=Librería+Moderna" alt="Librería Moderna">
+            <h3>Librería Moderna</h3>
+            <p>Libros, útiles escolares y más</p>
+            <a href="https://instagram.com/libreriamoderna" target="_blank">@libreriamoderna</a>
+        </div>
+
+        <div class="instagram-card">
+            <img src="https://via.placeholder.com/300?text=Deportes+Total" alt="Deportes Total">
+            <h3>Deportes Total</h3>
+            <p>Todo para el deporte y la vida activa</p>
+            <a href="https://instagram.com/deportestotal" target="_blank">@deportestotal</a>
+        </div>
+
+        <div class="instagram-card">
+            <img src="https://via.placeholder.com/300?text=Farmacia+Central" alt="Farmacia Central">
+            <h3>Farmacia Central</h3>
+            <p>Tu salud es nuestra prioridad</p>
+            <a href="https://instagram.com/farmaciacentral" target="_blank">@farmaciacentral</a>
+        </div>
+    </section>
+
+    <!-- Botón para agregar negocio -->
+    <a href="#" class="add-business-button">Agregar mi negocio</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tilisarao Market. Todos los derechos reservados.</p>
+    </footer>
+    <!-- Modal de contacto -->
+    <div id="contactModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Suma tu Comercio</h1>
+            <p>¿Querés que tu negocio aparezca en nuestra galería de Instagram? Contactanos por WhatsApp o completá el formulario para agregar tu comercio.</p>
+            
+            <!-- Sección de enlace a WhatsApp -->
+            <div class="contact-links">
+                <a href="https://wa.link/0k7veo" class="contact-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contactar vía WhatsApp
+                </a>
+            </div>
+    
+            <hr style="margin: 2rem 0;">
+    
+            <!-- Sección de formulario de envío -->
+            <h2>O completá el formulario</h2>
+            <form class="contact-form" action="https://formspree.io/f/mvgzqkpv" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre del Comercio</label>
+                    <input type="text" id="nombre" name="name" placeholder="Nombre de tu negocio" required>
+                </div>
+                <div class="form-group">
+                    <label for="instagram">Usuario de Instagram</label>
+                    <input type="text" id="instagram" name="instagram" placeholder="@tu.comercio" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="email" placeholder="tu@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción del Comercio</label>
+                    <textarea id="descripcion" name="message" rows="5" placeholder="Contanos brevemente sobre tu negocio y qué productos o servicios ofrecés" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Agregar estos estilos en la sección de estilos existente -->
+    <style>
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .close-button {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Estilos del formulario (los que ya tenías) */
+        .contact-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background-color: #f59e0b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+    </style>
+
+    <!-- Modificar el script existente agregando esto al final -->
+    <script>
+        // Funcionalidad del modal
+        const modal = document.getElementById('contactModal');
+        const addBusinessButton = document.querySelector('.add-business-button');
+        const closeButton = document.querySelector('.close-button');
+
+        addBusinessButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        // Funcionalidad de búsqueda
+        const searchInput = document.querySelector('.search-input');
+        const cards = document.querySelectorAll('.instagram-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Funcionalidad de filtros por categoría
+        const categoryButtons = document.querySelectorAll('.category-button');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.style.backgroundColor = '#e2e8f0');
+                button.style.backgroundColor = '#2563eb';
+                button.style.color = 'white';
+            });
+        });
+        
+    </script>
+</body>
+</html>
+</qodoArtifact>
