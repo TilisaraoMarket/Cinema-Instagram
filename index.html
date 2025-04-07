@@ -171,6 +171,80 @@
             transform: scale(1.05);
         }
 
+        /* Estilos para la sección promocional del creador de logos */
+        .logo-creator-promo {
+            background: linear-gradient(45deg, #2563eb, #1d4ed8);
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .promo-container {
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .promo-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .promo-text h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-text p {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .promo-button {
+            display: inline-block;
+            background-color: white;
+            color: #2563eb;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .promo-button:hover {
+            transform: scale(1.05);
+        }
+
+        .promo-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-sample-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: rotate(-5deg);
+        }
+
+        .logo-sample-container img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -250,6 +324,22 @@
         <h1>Cinema Instagram</h1>
         <p>Descubre y sigue a los comercios de Tilisarao en Instagram</p>
     </header>
+
+    <!-- Sección promocional del creador de logos -->
+    <section class="logo-creator-promo">
+        <div class="promo-container">
+            <div class="promo-text">
+                <h2>¿Necesitas un logo para tu negocio?</h2>
+                <p>Crea un logo profesional en minutos con nuestro creador de logos gratuito. ¡Perfecto para redes sociales y tu marca!</p>
+                <a href="https://tilisaraomarket.github.io/Logo-Creator/" class="promo-button">Crear mi logo ahora →</a>
+            </div>
+            <div class="promo-image">
+                <div class="logo-sample-container">
+                    <img src="logo-design-studio.png" alt="Ejemplos de logos">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Sección de búsqueda y filtros -->
     <section class="search-section">
